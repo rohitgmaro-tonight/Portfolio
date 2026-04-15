@@ -1,173 +1,175 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Finance Portfolio Dashboard</title>
+  <title>Finance Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="page-shell">
-    <header class="hero">
-      <nav class="topbar">
-        <span class="brand">FINANCE.PORTFOLIO</span>
-        <a href="#contact" class="nav-link">Discuss Strategy</a>
-      </nav>
-
-      <div class="hero-grid">
-        <section class="hero-copy">
-          <p class="eyebrow">Finance, budgeting and portfolio intelligence</p>
-          <h1>One-view reporting for smarter spending, sharper investments and cleaner transaction control.</h1>
-          <p class="hero-text">
-            This portfolio-style dashboard presents budgeting performance, investment allocation,
-            transaction monitoring and profit/loss analysis in a single calm view.
-          </p>
-
-          <div class="hero-actions">
-            <a class="primary-action" href="#analytics">View Dashboard</a>
-            <a class="secondary-action" href="#contact">Contact</a>
-          </div>
-        </section>
-
-        <aside class="hero-panel">
-          <div class="panel-label">Monthly snapshot</div>
-          <div class="panel-total" data-countup="284750">$0</div>
-          <p class="panel-caption">Assets tracked across budget, investments and operating cash flow.</p>
-          <div class="signal-row">
-            <div>
-              <span class="signal-label">Net growth</span>
-              <strong>+12.4%</strong>
-            </div>
-            <div>
-              <span class="signal-label">Efficiency score</span>
-              <strong>89 / 100</strong>
-            </div>
-          </div>
-        </aside>
+    <header class="hero reveal">
+      <div class="hero-copy-block">
+        <p class="eyebrow">Finance &bull; Budgeting &bull; Analysis</p>
+        <h1>Portfolio page with a complete money story in one calm view.</h1>
+        <p class="hero-copy">
+          This dashboard brings together cash flow, budget control, savings performance, asset position,
+          and monthly analysis without making the layout feel cramped. Every figure is shown in Indian Rupees.
+        </p>
+        <div class="hero-tags">
+          <span>Personal Finance</span>
+          <span>Budget Tracking</span>
+          <span>12-Month Analysis</span>
+        </div>
       </div>
+
+      <aside class="hero-panel">
+        <p class="panel-label">Reporting Window</p>
+        <p class="panel-value">Apr 2025 - Mar 2026</p>
+        <div class="panel-stats">
+          <div>
+            <span>Monthly savings rate</span>
+            <strong id="hero-savings-rate"></strong>
+          </div>
+          <div>
+            <span>Net worth</span>
+            <strong id="hero-net-worth"></strong>
+          </div>
+        </div>
+      </aside>
     </header>
 
-    <main>
-      <section class="kpi-strip" aria-label="Key performance indicators">
-        <article class="kpi-card">
-          <span class="kpi-label">Budget Accuracy</span>
-          <strong class="kpi-value" data-countup="94">0</strong>
-          <span class="kpi-note">Forecast alignment this quarter</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">Investment Return</span>
-          <strong class="kpi-value" data-countup="18.6">0</strong>
-          <span class="kpi-note">Annualized performance</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">Transactions Cleared</span>
-          <strong class="kpi-value" data-countup="1268">0</strong>
-          <span class="kpi-note">Processed with low exception rate</span>
-        </article>
-        <article class="kpi-card">
-          <span class="kpi-label">Profit / Loss Ratio</span>
-          <strong class="kpi-value" data-countup="3.4">0</strong>
-          <span class="kpi-note">Gain-to-loss efficiency</span>
-        </article>
+    <main class="dashboard">
+      <section class="section-group reveal">
+        <div class="group-head">
+          <div>
+            <p class="eyebrow">Snapshot</p>
+            <h2>Key Numbers</h2>
+          </div>
+          <p class="muted">A fast overview of income, spending, savings and long-term position.</p>
+        </div>
+        <section class="summary-grid" id="summary-cards"></section>
       </section>
 
-      <section class="analytics-grid" id="analytics">
-        <article class="dashboard-card budget-card">
-          <div class="card-header">
+      <section class="insight-band reveal" id="insight-band"></section>
+
+      <section class="main-grid">
+        <article class="card reveal">
+          <div class="section-head">
             <div>
-              <p class="section-tag">Budgeting</p>
-              <h2>Category control</h2>
+              <p class="eyebrow">Budgeting</p>
+              <h2>Budget vs Actual</h2>
             </div>
-            <span class="card-chip">Balanced spend</span>
+            <p class="muted">How each expense category is tracking this month.</p>
           </div>
           <div class="budget-list" id="budget-list"></div>
         </article>
 
-        <article class="dashboard-card investment-card">
-          <div class="card-header">
+        <article class="card reveal">
+          <div class="section-head">
             <div>
-              <p class="section-tag">Investments</p>
-              <h2>Allocation overview</h2>
+              <p class="eyebrow">Analysis</p>
+              <h2>Income Mix</h2>
             </div>
-            <span class="card-chip positive">Active growth</span>
+            <p class="muted" id="income-total"></p>
           </div>
-          <div class="allocation-chart" id="allocation-chart" aria-label="Investment allocation chart"></div>
-          <div class="allocation-legend" id="allocation-legend"></div>
-        </article>
-
-        <article class="dashboard-card transaction-card">
-          <div class="card-header">
-            <div>
-              <p class="section-tag">Transactions</p>
-              <h2>Recent activity</h2>
-            </div>
-            <span class="card-chip">Live-ready mock</span>
-          </div>
-          <div class="table-shell">
+          <div class="table-wrap">
             <table>
               <thead>
                 <tr>
-                  <th>Type</th>
-                  <th>Reference</th>
+                  <th>Source</th>
                   <th>Amount</th>
+                  <th>Share</th>
                 </tr>
               </thead>
-              <tbody id="transaction-table"></tbody>
+              <tbody id="income-table"></tbody>
             </table>
           </div>
         </article>
 
-        <article class="dashboard-card insight-card">
-          <div class="card-header">
+        <article class="card reveal">
+          <div class="section-head">
             <div>
-              <p class="section-tag">Data Analysis</p>
-              <h2>Profit and loss signals</h2>
+              <p class="eyebrow">Analysis</p>
+              <h2>Expense Mix</h2>
             </div>
-            <span class="card-chip warning">Watch volatility</span>
+            <p class="muted" id="expense-total"></p>
           </div>
-          <div class="ratio-block">
-            <div class="ratio-main">
-              <span>Profit/Loss Ratio</span>
-              <strong data-countup="3.4">0</strong>
-            </div>
-            <div class="ratio-stats">
-              <div>
-                <span>Profitable periods</span>
-                <strong>17 / 22</strong>
-              </div>
-              <div>
-                <span>Average drawdown</span>
-                <strong>4.8%</strong>
-              </div>
-            </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Amount</th>
+                  <th>Share</th>
+                </tr>
+              </thead>
+              <tbody id="expense-table"></tbody>
+            </table>
           </div>
-          <div class="insight-points" id="insight-points"></div>
         </article>
-      </section>
 
-      <section class="summary-band">
-        <article class="summary-card">
-          <p class="section-tag">Financial Story</p>
-          <h2>Built for fast reading, not noisy reporting.</h2>
-          <p>
-            The page compresses operations, cash discipline, portfolio growth and transaction hygiene into a single
-            interface so the viewer can understand performance in seconds.
-          </p>
+        <article class="card reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Trends</p>
+              <h2>12-Month Cash Flow</h2>
+            </div>
+            <p class="muted">Income and expense movement across the year.</p>
+          </div>
+          <div class="chart-box">
+            <svg id="cashflow-chart" class="line-chart" viewBox="0 0 640 280" aria-label="Cash flow for the past 12 months"></svg>
+          </div>
         </article>
-        <article class="summary-card contact-card" id="contact">
-          <p class="section-tag">Contact</p>
-          <h2>Let's build a clearer finance view.</h2>
-          <p>Available for portfolio analytics, budgeting systems, investment reporting and transaction workflows.</p>
-          <a href="mailto:financeportfolio@example.com" class="primary-action contact-action">financeportfolio@example.com</a>
+
+        <article class="card reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Position</p>
+              <h2>Balance Sheet</h2>
+            </div>
+            <p class="muted">Assets, liabilities and present net worth.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Head</th>
+                  <th>Amount</th>
+                </tr>
+              </thead>
+              <tbody id="balance-sheet"></tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Performance</p>
+              <h2>Annual Summary</h2>
+            </div>
+            <p class="muted">Profitability and operating efficiency for the full year.</p>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Measure</th>
+                  <th>Value</th>
+                </tr>
+              </thead>
+              <tbody id="pnl-table"></tbody>
+            </table>
+          </div>
         </article>
       </section>
     </main>
   </div>
 
-  <script src="script.js" defer></script>
+  <script src="script.js"></script>
 </body>
 </html>
