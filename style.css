@@ -173,6 +173,53 @@ td {
   margin-top: 22px;
 }
 
+.contact-section {
+  margin-top: 34px;
+  padding-bottom: 8px;
+}
+
+.contact-card {
+  padding: 28px 32px;
+  border-radius: var(--radius-lg);
+  background: var(--surface);
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.contact-card h2 {
+  margin-top: 2px;
+}
+
+.contact-list {
+  display: grid;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.contact-list p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+.contact-list span {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.contact-list a {
+  color: var(--accent-deep);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.contact-list a:hover,
+.contact-list a:focus-visible {
+  text-decoration: underline;
+}
+
 .section-group {
   margin-bottom: 24px;
 }
@@ -420,6 +467,10 @@ tbody tr:last-child td {
   }
 
   .hero {
+    padding: 24px;
+  }
+
+  .contact-card {
     padding: 24px;
   }
 
